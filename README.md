@@ -31,7 +31,7 @@ Aside from that, enjoy the game!
 - Displayed Wormy with a stuffed belly upon losing the game.
 - Create a yummy sound everytime Wormy eats a piece of food.
 - Create a pause function, it which the player can puase the game with the spacebar.
-- 
+
 
 ##Technologies Used
 - HTML
