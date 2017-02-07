@@ -3,48 +3,27 @@ $(document).ready(function(){
 	var canvas = $('canvas')[0];
 	var ctx = canvas.getContext("2d");
   var score = 0
+	var direction = 'right'
+
+	$(document).keydown(check)
 
 
-  window.addEventListener('keydown', check, true)
 
 
   function check(e) {
     var code = e.keyCode;
-    if (code == 37) {
-      var nx = snake_array[0].x;
-  		var ny = snake_array[0].y;
-  		nx --;
-  		var tail = snake_array.pop();
-  		tail.x = nx;
-      tail.y = ny
-  		snake_array.unshift(tail);
+
+		if (code == 37) {
+    	direction = "left"
     }
     if (code == 38) {
-      var nx = snake_array[0].x;
-  		var ny = snake_array[0].y;
-  		ny--;
-  		var tail = snake_array.pop();
-  		tail.x = nx;
-  		tail.y = ny;
-  		snake_array.unshift(tail);
+			direction = "down"
     }
     if (code == 39) {
-      var nx = snake_array[0].x;
-      var ny = snake_array[0].y;
-      nx ++;
-      var tail = snake_array.pop();
-      tail.x = nx;
-      tail.y = ny
-      snake_array.unshift(tail);
+			direction = "right"
     }
     if (code == 40) {
-      var nx = snake_array[0].x;
-      var ny = snake_array[0].y;
-      ny++;
-      var tail = snake_array.pop();
-      tail.x = nx;
-      tail.y = ny;
-      snake_array.unshift(tail);
+			direction = "up"
     }
   }
 
@@ -80,42 +59,23 @@ $(document).ready(function(){
   function update(){
     // score +=  2
 
+    var nx = snake_array[0].x;
+		var ny = snake_array[0].y;
 
-		// turn right
-    // var nx = snake_array[0].x;
-		// var ny = snake_array[0].y;
-		// nx ++;
-		// var tail = snake_array.pop();
-		// tail.x = nx;
-    // tail.y = ny
-		// snake_array.unshift(tail);
+		if (direction == "right") {
+				nx++;
+		} else if (direction == "left") {
+				nx--;
+		} else if (direction == "up") {
+				ny++;
+		} else if (direction == "down") {
+				ny--;
+		}
 
-    //turn left
-    // var nx = snake_array[0].x;
-		// var ny = snake_array[0].y;
-		// nx --;
-		// var tail = snake_array.pop();
-		// tail.x = nx;
-    // tail.y = ny
-		// snake_array.unshift(tail);
-    //
-    // // turn down
-    // var nx = snake_array[0].x;
-		// var ny = snake_array[0].y;
-		// ny++;
-		// var tail = snake_array.pop();
-		// tail.x = nx;
-		// tail.y = ny;
-		// snake_array.unshift(tail);
-    //
-    // //Turn up
-    // var nx = snake_array[0].x;
-		// var ny = snake_array[0].y;
-		// ny--;
-		// var tail = snake_array.pop();
-		// tail.x = nx;
-		// tail.y = ny;
-		// snake_array.unshift(tail);
+		var tail = snake_array.pop();
+		tail.x = nx;
+    tail.y = ny
+		snake_array.unshift(tail);
 
   }
 
@@ -124,7 +84,7 @@ $(document).ready(function(){
     draw()
     update()
 
-  }, 30)
+  }, 40)
 
 
 

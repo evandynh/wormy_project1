@@ -1,80 +1,101 @@
 $( document ).ready(function(){
-console.log('connected');
+  console.log('connected');
 
-var canvas = $('#canvas')[0]
-var ctx = canvas.getContext("2d")
-var score = 0
+  $(document).keydown(checkKey)
 
-var snake_array = [];
+  var canvas = $('#canvas')[0]
+  var ctx = canvas.getContext("2d")
+  var score = 0
+  var direction = "right"
 
-function create_snake() {
-  for(var i = 0; i < 5; i++) {
-    snake_array.push({x: i, y:0});
+  var wormy = [];
+  var foodPiece
+
+
+
+  function createFood() {
+    foodPiece = {x: (Math.floor(Math.random() * 500)), y: (Math.floor(Math.random() * 500))}
+    console.log(foodPiece.x);
+    console.log(foodPiece.y);
   }
-}
-create_snake()
 
-function draw() {
-  ctx.fillStyle = "white"
-  ctx.fillRect(0,0,500,500)
+  createFood()
 
-  ctx.font = "30px VT323"
-  ctx.fillStyle = '#D5E8D4';
-  ctx.fillText("Score: " + score, 10, 490)
+  function createWorm() {
+    for(var i = 0; i < 5; i++) {
+      wormy.push({x: i, y:0});
+    }
+  }
+  createWorm()
 
-  for(var i = 0; i < snake_array.length; i++) {
+  function draw() {
+    ctx.fillStyle = "white"
+    ctx.fillRect(0,0,500,500)
+
+    ctx.font = "30px VT323"
+    ctx.fillStyle = '#D5E8D4';
+    ctx.fillText("Score: " + score, 10, 490)
+
+    for(var i = 0; i < wormy.length; i++) {
+      ctx.fillStyle = "#D5E8D4";
+      ctx.fillRect(wormy[i].x*10, wormy[i].y*10, 10, 10);
+      ctx.strokeStyle = "grey";
+      ctx.strokeRect(wormy[i].x*10, wormy[i].y*10, 10, 10);
+    }
+
     ctx.fillStyle = "#D5E8D4";
-    ctx.fillRect(snake_array[i].x*10, snake_array[i].y*10, 10, 10);
+    ctx.fillRect(foodPiece.x, foodPiece.y, 10, 10);
     ctx.strokeStyle = "grey";
-    ctx.strokeRect(snake_array[i].x*10, snake_array[i].y*10, 10, 10);
+    ctx.strokeRect(foodPiece.x, foodPiece.y, 10, 10);
+
   }
-}
-draw();
+  draw();
 
-function update(){
-  // score +=  2
-  var l = snake_array.length
+  function update(){
+    // score +=  2
+    var l = wormy.length
+    var nx = wormy[l-1].x;
+    var ny = wormy[l-1].y;
 
-  // turn right
-  // var nx = snake_array[l-1].x;
-  // var ny = snake_array[l-1].y;
-  // nx ++;
-  // var tail = snake_array.shift();
-  // tail.x = nx;
-  // snake_array.push(tail);
 
-  // //turn left
-  // var nx = snake_array[l-1].x;
-  // var ny = snake_array[l-1].y;
-  // nx --;
-  // var tail = snake_array.shift();
-  // tail.x = nx;
-  // snake_array.push(tail);
-  //
-  // // turn down
-  // var nx = snake_array[l-1].x;
-  // var ny = snake_array[l-1].y;
-  // ny++;
-  // var tail = snake_array.shift();
-  // tail.x = nx;
-  // tail.y = ny;
-  // snake_array.push(tail);
-  //
-  // //Turn up
-  // var nx = snake_array[l-1].x;
-  // var ny = snake_array[l-1].y;
-  // ny--;
-  // var tail = snake_array.shift();
-  // tail.x = nx;
-  // tail.y = ny;
-  // snake_array.push(tail);
+    if (direction == "right") {
+        nx++;
+    } else if (direction == "left") {
+        nx--;
+    } else if (direction == "up") {
+        ny++;
+    } else if (direction == "down") {
+        ny--;
+    }
 
-}
+    var tail = wormy.shift();
+    tail.x = nx;
+    tail.y = ny
+    wormy.push(tail);
 
-setInterval(function(){
-  draw()
-  update()
-}, 30)
+  }
+
+  function checkKey(e) {
+    var code = e.keyCode;
+
+    if (code == 37) {
+      direction = "left"
+    }
+    if (code == 38) {
+      direction = "down"
+    }
+    if (code == 39) {
+      direction = "right"
+    }
+    if (code == 40) {
+      direction = "up"
+    }
+  }
+
+  setInterval(function(){
+    draw()
+    update()
+  }, 70)
 
 
 
