@@ -79,6 +79,12 @@ $(document).ready(function() {
       wormy.unshift({})
       createFood()
     }
+    for (var i = 0; i < wormy.length; i++) {
+      if(wormy[i].x === 50 || wormy[i].x === 0 || wormy[i].y === 50 || wormy[i].y === -1) {
+        reset()
+        direction = "right";
+      }
+    }
 
   }
 
@@ -96,13 +102,22 @@ $(document).ready(function() {
     }
 
   }
-
+function startGame(){
   setInterval(function() {
     draw()
     update()
   }, 50)
+}
 
+startGame()
 
+$('#reset').click(reset)
 
+function reset(){
+  score = 0
+  wormy = []
+  createWorm()
+  createFood()
+}
 
 })
