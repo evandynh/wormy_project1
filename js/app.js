@@ -14,7 +14,7 @@ $( document ).ready(function(){
 
 
   function createFood() {
-    foodPiece = {x: (Math.floor(Math.random() * 500)), y: (Math.floor(Math.random() * 500))}
+    foodPiece = {x: (Math.floor(Math.random() * 490)), y: (Math.floor(Math.random() * 490))}
     console.log(foodPiece.x);
     console.log(foodPiece.y);
   }
@@ -73,6 +73,11 @@ $( document ).ready(function(){
     tail.y = ny
     wormy.push(tail);
 
+    if (nx === foodPiece.x && ny === foodPiece.y) {
+      score++
+      createFood()
+    }
+
   }
 
   function checkKey(e) {
@@ -80,22 +85,20 @@ $( document ).ready(function(){
 
     if (code == 37) {
       direction = "left"
-    }
-    if (code == 38) {
+    } else if (code == 38) {
       direction = "down"
-    }
-    if (code == 39) {
+    } else if (code == 39) {
       direction = "right"
-    }
-    if (code == 40) {
+    } else if (code == 40) {
       direction = "up"
     }
+
   }
 
   setInterval(function(){
     draw()
     update()
-  }, 70)
+  }, 50)
 
 
 
