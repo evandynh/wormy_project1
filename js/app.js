@@ -1,4 +1,4 @@
-$( document ).ready(function(){
+$(document).ready(function() {
   console.log('connected');
 
   $(document).keydown(checkKey)
@@ -11,36 +11,37 @@ $( document ).ready(function(){
   var wormy = [];
   var foodPiece
 
-
-
-  function createFood() {
-    foodPiece = {x: (Math.floor(Math.random() * 490)), y: (Math.floor(Math.random() * 490))}
-    console.log(foodPiece.x);
-    console.log(foodPiece.y);
-  }
-
-  createFood()
-
   function createWorm() {
-    for(var i = 0; i < 5; i++) {
-      wormy.push({x: i, y:0});
+    for (var i = 0; i < 5; i++) {
+      wormy.push({
+        x: i,
+        y: 0
+      });
     }
   }
   createWorm()
 
+  function createFood() {
+    foodPiece = {
+      x: (Math.ceil((Math.random() * 490 + 1) / 10) * 10),
+      y: (Math.ceil((Math.random() * 490 + 1) / 10) * 10)
+    }
+  }
+  createFood()
+
   function draw() {
     ctx.fillStyle = "white"
-    ctx.fillRect(0,0,500,500)
+    ctx.fillRect(0, 0, 500, 500)
 
     ctx.font = "30px VT323"
     ctx.fillStyle = '#D5E8D4';
     ctx.fillText("Score: " + score, 10, 490)
 
-    for(var i = 0; i < wormy.length; i++) {
+    for (var i = 0; i < wormy.length; i++) {
       ctx.fillStyle = "#D5E8D4";
-      ctx.fillRect(wormy[i].x*10, wormy[i].y*10, 10, 10);
+      ctx.fillRect(wormy[i].x * 10, wormy[i].y * 10, 10, 10);
       ctx.strokeStyle = "grey";
-      ctx.strokeRect(wormy[i].x*10, wormy[i].y*10, 10, 10);
+      ctx.strokeRect(wormy[i].x * 10, wormy[i].y * 10, 10, 10);
     }
 
     ctx.fillStyle = "#D5E8D4";
@@ -51,21 +52,21 @@ $( document ).ready(function(){
   }
   draw();
 
-  function update(){
+  function update() {
     // score +=  2
     var l = wormy.length
-    var nx = wormy[l-1].x;
-    var ny = wormy[l-1].y;
+    var nx = wormy[l - 1].x;
+    var ny = wormy[l - 1].y;
 
 
     if (direction == "right") {
-        nx++;
+      nx++;
     } else if (direction == "left") {
-        nx--;
+      nx--;
     } else if (direction == "up") {
-        ny++;
+      ny++;
     } else if (direction == "down") {
-        ny--;
+      ny--;
     }
 
     var tail = wormy.shift();
@@ -73,8 +74,9 @@ $( document ).ready(function(){
     tail.y = ny
     wormy.push(tail);
 
-    if (nx === foodPiece.x && ny === foodPiece.y) {
+    if (nx === foodPiece.x / 10 && ny === foodPiece.y / 10) {
       score++
+      wormy.unshift({})
       createFood()
     }
 
@@ -95,7 +97,7 @@ $( document ).ready(function(){
 
   }
 
-  setInterval(function(){
+  setInterval(function() {
     draw()
     update()
   }, 50)
