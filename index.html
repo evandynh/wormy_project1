@@ -14,26 +14,27 @@
   <div id="startModal">
     <div class="modal-content">
       <h2>Rules</h2>
-      <p>Feed Wormy: collect as many pieces of food as you can without running into the walls or yourself.</p>
+      <p id="rules">Feed Wormy: collect as many pieces of food as you can without running into the walls or yourself.</p>
       <button id="start">Start</button>
     </div>
   </div>
-  <h1 id="header">Wormy</h1>
-
-  <h2 id="best">Personal Best: 0</h2>
-  <div id="gameboard">
-    <canvas id="canvas" tabindex="1" width="500" height="500"></canvas>
-    <p></p>
-    <button id="reset">Reset</button>
-  </div>
-
   <div id="endModal">
     <div class="modal-content">
-      <h2>I'm stuffed!</h2>
-      <p id="scores"></p>
+      <h2>I"M STUFFED!</h2>
+      <p id="currentScoreText"></p>
+      <p id="bestScoreText"></p>
       <button id="startAgain">Try Again</button>
     </div>
   </div>
+
+  <h1 id="header">Wormy</h1>
+  <h2 id="best">Personal Best: 0</h2>
+
+  <div id="gameboard">
+    <canvas id="canvas" tabindex="1" width="500" height="500"></canvas>
+    <button id="reset">Reset</button>
+  </div>
+
 
 </body>
 

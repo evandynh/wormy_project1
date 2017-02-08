@@ -1,11 +1,11 @@
 $(document).ready(function() {
   console.log('connected');
 
-  $("#startModal")
+  var modal = $("#startModal")
   window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
+    if (event.target == modal) {
+      modal.css('display', 'none');
+    }
   }
   $(document).keydown(checkKey)
 
@@ -90,8 +90,8 @@ $(document).ready(function() {
     for (var i = 0; i < wormy.length; i++) {
       if (wormy[i].x === 51 || wormy[i].x === -1 || wormy[i].y === 51 || wormy[i].y === -1) {
         personalBest()
-        reset()
-        direction = "right";
+        $('#endModal').css('display', 'block')
+
       }
     }
 
@@ -100,8 +100,8 @@ $(document).ready(function() {
     for (var j = 1; j < wormy.length; j++) {
       if (wormy[j].x === x && wormy[j].y === y) {
         personalBest()
-        reset()
-        direction = "right";
+        $('#endModal').css('display', 'block')
+
       }
     }
 
@@ -109,9 +109,11 @@ $(document).ready(function() {
   }
 
   function personalBest() {
+    $('#currentScoreText').text('Your Score: ' + score)
     if (score > bestScore) {
       bestScore = score
       $('#best').text('Personal Best: ' + bestScore)
+      $('#bestScoreText').text('Personal Best: ' + bestScore)
     }
   }
 
@@ -126,8 +128,9 @@ $(document).ready(function() {
       direction = "right"
     } else if (code == 40) {
       direction = "up"
+    } else if (code == 13) {
+      startGame()
     }
-
   }
 
   function startGame() {
@@ -138,8 +141,14 @@ $(document).ready(function() {
     }, 60)
   }
 
+  function tryAgain() {
+    reset()
+    direction = 'right'
+    $('#endModal').css('display', 'none')
+  }
+
   $('#start').click(startGame)
-  $('#startAgain').click(startGame)
+  $('#startAgain').click(tryAgain)
   $('#reset').click(reset)
 
   function reset() {
