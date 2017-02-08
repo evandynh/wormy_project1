@@ -105,7 +105,6 @@ $(document).ready(function() {
       }
     }
 
-
   }
 
   function personalBest() {
@@ -130,6 +129,8 @@ $(document).ready(function() {
       direction = "up"
     } else if (code == 13) {
       startGame()
+    } else if (code == 32) {
+      pauseGame()
     }
   }
 
@@ -149,7 +150,11 @@ $(document).ready(function() {
 
   $('#start').click(startGame)
   $('#startAgain').click(tryAgain)
-  $('#reset').click(reset)
+  $('#reset').click(pauseGame)
+
+function pauseGame(){
+  confirm('Paused! Press OK to continue');
+}
 
   function reset() {
     score = 0
