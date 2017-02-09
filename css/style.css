@@ -3,11 +3,15 @@
   font-family: Slackey, sans-serif;
 }
 
+.arrowlogo {
+  width: 162px;
+}
+
 #best {
   width: 500px;
   text-align: right;
   margin: 0 auto;
-  color: #D5E8D4;
+  color: #9fdf9f;
 }
 
 #bestScoreText {
@@ -15,8 +19,15 @@
 }
 
 #canvas {
-  border: 8px solid #D5E8D4;
+  border: 8px solid #9fdf9f;
   border-radius: 10px;
+}
+
+#controls {
+  float: left;
+  width: 28%;
+  margin-top: 270px;
+  margin-left: 40px;
 }
 
 #currentScoreText {
@@ -35,7 +46,7 @@
 }
 
 #gameboard {
-  width: 500px;
+  width: 516px;
   margin: 0 auto;
 }
 
@@ -60,7 +71,7 @@
   margin: 12px auto;
   width: 100%;
   font-size: 24px;
-  color: #D5E8D4;
+  color: #9fdf9f;
 }
 
 #start {
@@ -87,9 +98,15 @@
   border-radius: 10px;
 }
 
+#wormy {
+  display: inline-block;
+  width: 100px;
+
+}
+
 .modal-content {
   color: white;
-  background-color: #D5E8D4;
+  background-color: #9fdf9f;
   width: 70%;
   margin: 204px auto;
   padding: 6px;
@@ -98,9 +115,9 @@
 }
 
 h1 {
-  text-align: left;
+  text-align: center;
   font-size: 100px;
-  margin: 0;
+  margin: 0 10px;
   color: #D5E8D4;
 }
 
@@ -116,6 +133,7 @@ h3 {
 
 p {
   text-shadow: 1px 2px grey;
+  color: white;
 }
 
 button {
@@ -124,7 +142,7 @@ button {
   font-size: 25px;
   border-radius: 10px;
   background-color: white;
-  color: #D5E8D4;
+  color: #9fdf9f;
   box-shadow: 1px 2px 5px #888888;
 }
 
@@ -139,4 +157,7 @@ body {
   background-repeat: no-repeat;;
 }
 
-@ media (max) background
+@media (max-width: 100px) {
+  #best, #gameboard {
+    margin: 0 50px 0 auto;
+}

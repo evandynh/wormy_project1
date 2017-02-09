@@ -53,15 +53,15 @@ $(document).ready(function() {
     ctx.fillRect(0, 0, 500, 500)
 
     ctx.font = "20px Slackey"
-    ctx.fillStyle = '#D5E8D4';
+    ctx.fillStyle = '#9fdf9f';
     ctx.fillText("Score: " + score, 10, 490)
 
     for (var i = 0; i < wormy.length; i++) {
-      ctx.fillStyle = "#D5E8D4";
+      ctx.fillStyle = "##9fdf9f";
       ctx.fillRect(wormy[i].x * 10, wormy[i].y * 10, 10, 10);
     }
 
-    ctx.fillStyle = "#D5E8D4";
+    ctx.fillStyle = "#9fdf9f";
     ctx.fillRect(foodPiece.x, foodPiece.y, 10, 10);
 
   }
@@ -141,8 +141,11 @@ $(document).ready(function() {
     }
   }
 
+  $('#start').click(startGame)
+
   function startGame() {
     $('#startModal').css('display', 'none')
+
     setInterval(function() {
       draw()
       if (running) {
@@ -157,13 +160,8 @@ $(document).ready(function() {
     $('#endModal').css('display', 'none')
   }
 
-  $('#start').click(startGame)
   $('#startAgain').click(tryAgain)
-  // $('#pause').click(pauseGame)
 
-  // function pauseGame() {
-  //   confirm('Paused! Press OK to continue');
-  // }
 
   function reset() {
     score = 0
