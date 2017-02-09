@@ -8,7 +8,13 @@ Rules are simple:
 - If you run into Wormy's tail or the boundary's of the board, you lose.
 - Your time will display as a personal best once you have completed the level.
 
-Aside from that, enjoy the game!
+Aside from that, enjoy!
+
+##Install Instructions
+- Clone the Repo
+- Click on GitPages link to open the game in your browser.
+
+<br></br>
 
 [TRELLO:  User Stories](https://trello.com/b/OAbeld43/project-1-wormy)
 
@@ -17,7 +23,7 @@ Aside from that, enjoy the game!
 ##Gameboard
 ![Gameboard] (assets/Wormy_Gameboard.png)
 
-##MVP
+##Approach
 - Create a Start menu that shows the rules of the game and displays a start button.
 - Create a working Wormy in which the player can change directions with the keypad. 
 - Create a running score that adds +1 point everytime a piece of food is collected.
@@ -31,11 +37,14 @@ Aside from that, enjoy the game!
 - Displayed Wormy with a stuffed belly upon losing the game.
 - Create a yummy sound everytime Wormy eats a piece of food.
 - Create a pause function, it which the player can puase the game with the spacebar.
+- Display an image of the controls to be displayed left of the game board while playing.
 
 
 ##Technologies Used
 - HTML
 - CSS 
 - Javascript / jQuery
-- CraftyJS 
 - Canvas
+
+##Unsolved Problems
+- Anytime the spacebar is hit the game pauses, even if the player is in the start/end modals. If pressed before the game starts, the snake will stay in place and the game looks broken.
