@@ -26,6 +26,7 @@ $(document).ready(function() {
   var bestScore = 0
   var direction = "right"
   var running = true
+  var started
 
   var wormy = [];
   var foodPiece
@@ -135,7 +136,11 @@ $(document).ready(function() {
     } else if (code == 40) {
       direction = "up"
     } else if (code == 13) {
-      startGame()
+      if(!started) {
+        startGame()
+      } else {
+        tryAgain()
+      }
     } else if (code == 32) {
       running ? running = false : running = true
     }
@@ -144,8 +149,8 @@ $(document).ready(function() {
   $('#start').click(startGame)
 
   function startGame() {
+    started = true
     $('#startModal').css('display', 'none')
-
     setInterval(function() {
       draw()
       if (running) {
@@ -155,9 +160,10 @@ $(document).ready(function() {
   }
 
   function tryAgain() {
+    $('#startModal').css('display', 'none')
+    $('#endModal').css('display', 'none')
     reset()
     direction = 'right'
-    $('#endModal').css('display', 'none')
   }
 
   $('#startAgain').click(tryAgain)
