@@ -1,12 +1,22 @@
 $(document).ready(function() {
   console.log('connected');
 
-  var modal = $("#startModal")
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.css('display', 'none');
+  var bgMusic = document.getElementById('bg-music')
+  bgMusic.muted = false;
+
+  $("#mute").click(function() {
+    $('#bg-music').prop('muted', !$('#bg-music').prop('muted'));
+  });
+
+
+  $('#mute').click(function() {
+    if (bgMusic.muted === true) {
+      $('#mute').css('background-image', 'url(./images/mute.png)')
+    } else {
+      $('#mute').css('background-image', 'url(./images/unmute.png)');
     }
-  }
+  })
+
   $(document).keydown(checkKey)
 
 
@@ -15,6 +25,7 @@ $(document).ready(function() {
   var score = 0
   var bestScore = 0
   var direction = "right"
+  var running = true
 
   var wormy = [];
   var foodPiece
@@ -31,37 +42,32 @@ $(document).ready(function() {
 
   function createFood() {
     foodPiece = {
-      x: (Math.ceil((Math.random() * (490 + 1)) / 10) * 10),
-      y: (Math.ceil((Math.random() * (490 + 1)) / 10) * 10)
+      x: (Math.ceil((Math.random() * (480 + 1)) / 10) * 10),
+      y: (Math.ceil((Math.random() * (480 + 1)) / 10) * 10)
     }
   }
   createFood()
 
   function draw() {
-    ctx.fillStyle = "white"
+    ctx.fillStyle = "ivory"
     ctx.fillRect(0, 0, 500, 500)
 
-    ctx.font = "30px VT323"
+    ctx.font = "20px Slackey"
     ctx.fillStyle = '#D5E8D4';
     ctx.fillText("Score: " + score, 10, 490)
 
     for (var i = 0; i < wormy.length; i++) {
       ctx.fillStyle = "#D5E8D4";
       ctx.fillRect(wormy[i].x * 10, wormy[i].y * 10, 10, 10);
-      ctx.strokeStyle = "grey";
-      ctx.strokeRect(wormy[i].x * 10, wormy[i].y * 10, 10, 10);
     }
 
     ctx.fillStyle = "#D5E8D4";
     ctx.fillRect(foodPiece.x, foodPiece.y, 10, 10);
-    ctx.strokeStyle = "grey";
-    ctx.strokeRect(foodPiece.x, foodPiece.y, 10, 10);
 
   }
   draw();
 
   function update() {
-    // score +=  2
     var l = wormy.length
     var xVal = wormy[l - 1].x;
     var yVal = wormy[l - 1].y;
@@ -84,11 +90,12 @@ $(document).ready(function() {
 
     if (xVal === foodPiece.x / 10 && yVal === foodPiece.y / 10) {
       score++
+      $('#eatSound')[0].play()
       wormy.unshift({})
       createFood()
     }
     for (var i = 0; i < wormy.length; i++) {
-      if (wormy[i].x === 51 || wormy[i].x === -1 || wormy[i].y === 51 || wormy[i].y === -1) {
+      if (wormy[i].x === 50 || wormy[i].x === -1 || wormy[i].y === 50 || wormy[i].y === -1) {
         personalBest()
         $('#endModal').css('display', 'block')
 
@@ -130,7 +137,7 @@ $(document).ready(function() {
     } else if (code == 13) {
       startGame()
     } else if (code == 32) {
-      pauseGame()
+      running ? running = false : running = true
     }
   }
 
@@ -138,7 +145,9 @@ $(document).ready(function() {
     $('#startModal').css('display', 'none')
     setInterval(function() {
       draw()
-      update()
+      if (running) {
+        update()
+      }
     }, 60)
   }
 
@@ -150,11 +159,11 @@ $(document).ready(function() {
 
   $('#start').click(startGame)
   $('#startAgain').click(tryAgain)
-  $('#reset').click(pauseGame)
+  // $('#pause').click(pauseGame)
 
-function pauseGame(){
-  confirm('Paused! Press OK to continue');
-}
+  // function pauseGame() {
+  //   confirm('Paused! Press OK to continue');
+  // }
 
   function reset() {
     score = 0

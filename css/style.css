@@ -15,7 +15,8 @@
 }
 
 #canvas {
-  border: 4px solid #D5E8D4;
+  border: 8px solid #D5E8D4;
+  border-radius: 10px;
 }
 
 #currentScoreText {
@@ -42,14 +43,24 @@
   text-shadow: 1px 2px grey;
 }
 
+#mute {
+  width: 30px;
+  height: 28px;
+  float: left;
+  background-size: cover;
+  margin-top: 12px;
+  color: grey;
+}
+
 #rules {
   font-size: 22px;
 }
 
-#reset {
-  margin: 4px;
-  height: 43px;
-  width: 107px;
+#pause {
+  margin: 12px auto;
+  width: 100%;
+  font-size: 24px;
+  color: #D5E8D4;
 }
 
 #start {
@@ -124,9 +135,8 @@ button:hover {
 
 body {
   background-image: url(http://wallpapercave.com/wp/FQizObE.png);
-  background-size: cover;
-  background-repeat: repeat-y;
-  background
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;;
 }
 
 @ media (max) background
