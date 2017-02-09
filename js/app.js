@@ -1,7 +1,8 @@
 $(document).ready(function() {
   console.log('connected');
 
-  var bgMusic = document.getElementById('bg-music')
+
+  var bgMusic = $('#bg-music')
   bgMusic.muted = false;
 
   $("#mute").click(function() {
@@ -16,6 +17,28 @@ $(document).ready(function() {
       $('#mute').css('background-image', 'url(./images/unmute.png)');
     }
   })
+
+  function checkKey(e) {
+    var code = e.keyCode;
+
+    if (code == 37) {
+      direction = "left"
+    } else if (code == 38) {
+      direction = "down"
+    } else if (code == 39) {
+      direction = "right"
+    } else if (code == 40) {
+      direction = "up"
+    } else if (code == 13) {
+      if (!started) {
+        startGame()
+      } else {
+        tryAgain()
+      }
+    } else if (code == 32) {
+      running ? running = false : running = true
+    }
+  }
 
   $(document).keydown(checkKey)
 
@@ -124,27 +147,6 @@ $(document).ready(function() {
     }
   }
 
-  function checkKey(e) {
-    var code = e.keyCode;
-
-    if (code == 37) {
-      direction = "left"
-    } else if (code == 38) {
-      direction = "down"
-    } else if (code == 39) {
-      direction = "right"
-    } else if (code == 40) {
-      direction = "up"
-    } else if (code == 13) {
-      if(!started) {
-        startGame()
-      } else {
-        tryAgain()
-      }
-    } else if (code == 32) {
-      running ? running = false : running = true
-    }
-  }
 
   $('#start').click(startGame)
 

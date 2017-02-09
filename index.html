@@ -12,40 +12,40 @@
 
 <body>
 
-<audio id="bg-music" src="./sounds/14-enchanted-forest-pursuit.mp3"autoplay=""></audio>
-<audio id="eatSound" src="./sounds/eat-food.mp3"></audio>
+  <audio id="bg-music" src="./sounds/14-enchanted-forest-pursuit.mp3"autoplay=""loop=""></audio>
+  <audio id="eatSound" src="./sounds/eat-food.mp3"></audio>
 
-<div id="startModal">
-    <div class="modal-content">
-      <h3>Rules</h3>
-      <p id="rules">Feed Wormy! Collect as many pieces of food as you can without running into the walls or yourself.</p>
-      <button id="start">Start</button>
+  <div id="startModal">
+      <div class="modal-content">
+        <h3>Rules</h3>
+        <p id="rules">Feed Wormy! Collect as many pieces of food as you can without running into the walls or yourself.</p>
+        <button id="start">Start</button>
+      </div>
     </div>
-  </div>
-  <div id="endModal">
-    <div class="modal-content">
-      <h2>I"M STUFFED!</h2>
-      <p id="currentScoreText"></p>
-      <p id="bestScoreText"></p>
-      <button id="startAgain">Try Again</button>
+    <div id="endModal">
+      <div class="modal-content">
+        <h2>I"M STUFFED!</h2>
+        <p id="currentScoreText"></p>
+        <p id="bestScoreText"></p>
+        <button id="startAgain">Try Again</button>
+      </div>
     </div>
-  </div>
 
-  <h1 id="header">Wormy  <img src="./images/worm1.png" alt="logo of wormy" id="wormy">
-</h1>
-  <h2 id="best">Personal Best: 0</h2>
+    <h1 id="header">Wormy  <img src="./images/worm1.png" alt="logo of wormy" id="wormy">
+  </h1>
+    <h2 id="best">Personal Best: 0</h2>
 
-  <div id="controls">
-    <p>Use the arrow keys to move.</p>
-    <img class="arrowlogo" src="./images/keyboard.png" alt="picture of keyboard">
+    <div id="controls">
+      <p>Use the arrow keys to move.</p>
+      <img class="arrowlogo" src="./images/keyboard.png" alt="picture of keyboard">
 
-  </div>
+    </div>
 
-  <div id="gameboard">
-    <canvas id="canvas" tabindex="1" width="500" height="500"></canvas>
-    <img id="mute" src="./images/unmute.png">
-    <p id="pause">[space] to pause</p>
-  </div>
+    <div id="gameboard">
+      <canvas id="canvas" tabindex="1" width="500" height="500"></canvas>
+      <img id="mute" src="./images/unmute.png">
+      <p id="pause">[space] to pause</p>
+    </div>
 
 
 </body>

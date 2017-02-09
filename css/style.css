@@ -152,7 +152,7 @@ button:hover {
 }
 
 body {
-  background-image: url(http://wallpapercave.com/wp/FQizObE.png);
+  background-image: url("../images/jungle-bg.png");
   background-size: 100vw 100vh;
   background-repeat: no-repeat;;
 }
