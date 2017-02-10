@@ -130,6 +130,13 @@
   box-shadow: 7px 6px 5px grey;
 }
 
+.blink {
+  animation: blink .5s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {color: red}
+}
 
 h1 {
   text-align: center;

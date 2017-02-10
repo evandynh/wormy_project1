@@ -100,6 +100,7 @@ $(document).ready(function() {
   draw();
 
   function update() {
+    checkScore()
     var l = wormy.length
     var xVal = wormy[l - 1].x;
     var yVal = wormy[l - 1].y;
@@ -128,7 +129,7 @@ $(document).ready(function() {
     }
     for (var i = 0; i < wormy.length; i++) {
       if (wormy[i].x === 50 || wormy[i].x === -1 || wormy[i].y === 50 || wormy[i].y === -1) {
-        personalBest()
+        setPersonalBest()
         modal = true
         $('#endModal').css('display', 'block')
 
@@ -139,7 +140,7 @@ $(document).ready(function() {
     var y = wormy[0].y
     for (var j = 1; j < wormy.length; j++) {
       if (wormy[j].x === x && wormy[j].y === y) {
-        personalBest()
+        setPersonalBest()
         modal = true
         $('#endModal').css('display', 'block')
 
@@ -147,8 +148,18 @@ $(document).ready(function() {
     }
 
   }
+  function checkScore(){
+    if (score > bestScore && bestScore > 0) {
+      $('#tense-music')[0].play()
+      $('#bg-music')[0].pause()
+      $('#best').addClass('blink')
+    }
+  }
 
-  function personalBest() {
+  function setPersonalBest() {
+    $('#tense-music')[0].pause()
+    $('#tense-music')[0].currentTime = 0
+    $('#bg-music')[0].play()
     $('#currentScoreText').text('Your Score: ' + score)
     if (score > bestScore) {
       bestScore = score
@@ -184,6 +195,7 @@ $(document).ready(function() {
 
 
   function reset() {
+    $('#best').removeClass('blink')
     score = 0
     wormy = []
     createWorm()
