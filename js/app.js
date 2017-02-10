@@ -40,7 +40,7 @@ $(document).ready(function() {
         tryAgain()
       }
     } else if (code == 32) {
-      if(!modal) {
+      if (!modal) {
         playing ? playing = false : playing = true
       }
       e.preventDefault()
@@ -148,10 +148,12 @@ $(document).ready(function() {
     }
 
   }
-  function checkScore(){
+
+  function checkScore() {
     if (score > bestScore && bestScore > 0) {
       $('#tense-music')[0].play()
       $('#bg-music')[0].pause()
+      $('#bg-music')[0].currentTime = 0
       $('#best').addClass('blink')
     }
   }
@@ -165,6 +167,7 @@ $(document).ready(function() {
       bestScore = score
       $('#best').text('Personal Best: ' + bestScore)
       $('#bestScoreText').text('Personal Best: ' + bestScore)
+      $('#bestScoreImg').css('visibility', 'visible')
     }
   }
 
@@ -186,6 +189,7 @@ $(document).ready(function() {
   function tryAgain() {
     $('#startModal').css('display', 'none')
     $('#endModal').css('display', 'none')
+    $('#bestScoreImg').css('visibility', 'hidden')
     reset()
     modal = false
     direction = 'right'
