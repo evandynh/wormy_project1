@@ -23,12 +23,16 @@ $(document).ready(function() {
 
     if (code == 37) {
       direction = "left"
+      e.preventDefault()
     } else if (code == 38) {
       direction = "down"
+      e.preventDefault()
     } else if (code == 39) {
       direction = "right"
+      e.preventDefault()
     } else if (code == 40) {
       direction = "up"
+      e.preventDefault()
     } else if (code == 13) {
       if (!started) {
         startGame()
@@ -37,6 +41,7 @@ $(document).ready(function() {
       }
     } else if (code == 32) {
       running ? running = false : running = true
+      e.preventDefault()
     }
   }
 

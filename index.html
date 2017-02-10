@@ -33,20 +33,20 @@
 
     <h1 id="header">Wormy  <img src="./images/worm1.png" alt="logo of wormy" id="wormy">
   </h1>
-    <h2 id="best">Personal Best: 0</h2>
 
+  <div id="middle">
+
+    <div id="gameboard">
+      <h2 id="best">Personal Best: 0</h2>
+      <canvas id="canvas" tabindex="1" width="500" height="500"></canvas>
+    </div>
     <div id="controls">
       <p>Use the arrow keys to move.</p>
       <img class="arrowlogo" src="./images/keyboard.png" alt="picture of keyboard">
-
+      <p id="spacebar">[spacebar] to pause</p>
     </div>
-
-    <div id="gameboard">
-      <canvas id="canvas" tabindex="1" width="500" height="500"></canvas>
-      <img id="mute" src="./images/unmute.png">
-      <p id="pause">[space] to pause</p>
-    </div>
-
+  </div>
+  <img id="mute" src="./images/unmute.png">
 
 </body>
 
