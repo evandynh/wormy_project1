@@ -40,7 +40,9 @@ $(document).ready(function() {
         tryAgain()
       }
     } else if (code == 32) {
-      running ? running = false : running = true
+      if(!modal) {
+        playing ? playing = false : playing = true
+      }
       e.preventDefault()
     }
   }
@@ -53,8 +55,9 @@ $(document).ready(function() {
   var score = 0
   var bestScore = 0
   var direction = "right"
-  var running = true
+  var playing = true
   var started
+  var modal = true
 
   var wormy = [];
   var foodPiece
@@ -126,6 +129,7 @@ $(document).ready(function() {
     for (var i = 0; i < wormy.length; i++) {
       if (wormy[i].x === 50 || wormy[i].x === -1 || wormy[i].y === 50 || wormy[i].y === -1) {
         personalBest()
+        modal = true
         $('#endModal').css('display', 'block')
 
       }
@@ -136,6 +140,7 @@ $(document).ready(function() {
     for (var j = 1; j < wormy.length; j++) {
       if (wormy[j].x === x && wormy[j].y === y) {
         personalBest()
+        modal = true
         $('#endModal').css('display', 'block')
 
       }
@@ -158,9 +163,10 @@ $(document).ready(function() {
   function startGame() {
     started = true
     $('#startModal').css('display', 'none')
+    modal = false
     setInterval(function() {
       draw()
-      if (running) {
+      if (playing) {
         update()
       }
     }, 60)
@@ -170,6 +176,7 @@ $(document).ready(function() {
     $('#startModal').css('display', 'none')
     $('#endModal').css('display', 'none')
     reset()
+    modal = false
     direction = 'right'
   }
 
