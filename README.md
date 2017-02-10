@@ -54,3 +54,4 @@ Aside from that, enjoy!
 
 ##Unsolved Problems
 - I was able to work around many of my intial challenges with the functionality of the game. Any further problems involved adding more features and stretch goals.
+- Due to time constrants, I was unable to animate the modal transitions as well as animation wormy to get fatter as the player eats pieces.
