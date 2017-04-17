@@ -19,7 +19,7 @@ Aside from that, enjoy!
 [TRELLO:  User Stories](https://trello.com/b/OAbeld43/project-1-wormy)
 
 ## Start Menu
-![Start Menu](assets/Wormy_Start Menu.png)
+![Start Menu](assets/Wormy_Start_Menu.png)
 ## Gameboard
 ![Gameboard](assets/Wormy_Gameboard.png)
 
